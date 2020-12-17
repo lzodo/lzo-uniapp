@@ -1,9 +1,21 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate"
+
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+    // plugins: [createPersistedState()],
+    plugins: [
+		createPersistedState({
+			storage: {
+				getItem: key => uni.getStorageSync(key),
+				setItem: (key, value) => uni.setStorageSync(key, value),
+				removeItem: key => uni.removeStorageSync(key)
+			}
+		})
+	],
     state: {
         /**
          * 是否需要强制登录
@@ -14,6 +26,7 @@ const store = new Vuex.Store({
 
         hasphone: "",
         token: "",
+        platform:{},
         devModelList:[],//获取图片
         fileApi: 'http://api.huihezn.com/fileApi',
     },
@@ -23,22 +36,19 @@ const store = new Vuex.Store({
             console.log(data)
             console.log('state.devModelList')
         },
-        login(state, userName) {
-            state.userName = userName || "新用户";
+        login(state, userInfo) {
             state.hasLogin = true;
 
-            uni.setStorageSync(
-                "loginInfoJson",
-                JSON.stringify({
-                    hasphone: true,
-                    token:
-                        "eyJST0xFIjoicm9vdCx4eWpXZUNoYXQsZGxzX2Rpc3BsYXlCb2FyZCx3ZWl4aW5DcCxkaXNwbGF5Qm9hcmQsYWRtaW4sbGllaHVXZUNoYXQsb25saW5lQ2hlY2ssZGV2ZWxvcGVyX29ubmVyLGhod3hTY2hlZHVsZSx0aHVuZGVyLGh1aWhlV2VDaGF0LHNlbmRDbWQsbGllaHUsdG9uZ2JhaVdlQ2hhdCx1c2VyIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiI3ZDdiZDkzYy00NmZkLTQ5MTctODZkNS1hOWEwYzNiMmM1OTgiLCJzdWIiOiJyb290IiwiaWF0IjoxNjA4MTA3NTEzLCJleHAiOjE2MDgxMjE5MTN9.DWMHBKD5DG1zXb8SakSAlhqkcHLNbY60yWPPsjT_nN0",
-                })
-            );
-
             let loginInfoJson = JSON.parse(uni.getStorageSync("loginInfoJson"));
-            state.hasphone = loginInfoJson.hasphone;
+            state.hasphone = loginInfoJson.phone||'无';
             state.token = loginInfoJson.token;
+            state.userName = loginInfoJson.displayname || "新用户";
+
+            state.platform = {
+                systemname:loginInfoJson.systemInfo.systemname
+            };
+
+
             console.log(state.token)
         },
         logout(state) {
@@ -48,9 +58,10 @@ const store = new Vuex.Store({
             uni.removeStorageSync("loginInfoJson");
             state.hasphone = "";
             state.token = "";
-            // uni.reLaunch({
-            //     url: "../pages/login/login",
-            // });
+            state.platform = {};
+            uni.reLaunch({
+                url: "../login/login",
+            });
         },
     },
 });

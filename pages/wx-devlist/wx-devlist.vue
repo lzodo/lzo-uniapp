@@ -89,12 +89,14 @@ export default {
     methods: {
         godevinfo(item) {
             console.log(item)
-            console.log(uni.navigateTo)
             uni.navigateTo({
-                url: "/pages/wx-devinfo/wx-devinfo",
+                url: `/pages/wx-devinfo/wx-devinfo?ucode=${item.ucode}`,
             });
         },
         getList(state) {
+            if(state == undefined){
+                state == 'default'
+            }
             let params = {
                 name: this.keyword,
                 pageNumber: this.number,

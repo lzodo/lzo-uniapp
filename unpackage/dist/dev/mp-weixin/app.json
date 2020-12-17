@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/wx-position/wx-position",
-    "pages/wx-devlist/wx-devlist",
-    "pages/main/main",
     "pages/login/login",
+    "pages/wx-devlist/wx-devlist",
+    "pages/wx-position/wx-position",
+    "pages/wx-devinfo/wx-devinfo",
+    "pages/main/main",
     "pages/reg/reg",
     "pages/pwd/pwd",
     "pages/user/user"
@@ -34,12 +35,6 @@
         "customIcon": false
       },
       {
-        "pagePath": "pages/main/main",
-        "text": "首页",
-        "iconPath": "static/img/home.png",
-        "selectedIconPath": "static/img/homeHL.png"
-      },
-      {
         "pagePath": "pages/user/user",
         "text": "我的",
         "iconPath": "static/img/user.png",
@@ -48,5 +43,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap23.json"
 }

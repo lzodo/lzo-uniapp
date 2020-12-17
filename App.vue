@@ -7,19 +7,22 @@ export default {
     onShow: function () {
         console.log("App Show");
         console.log(this.$u.config.v);
-        this.getDeviceModel()
+
+        try {
+            let loginInfoJson = JSON.parse(uni.getStorageSync("loginInfoJson"));
+            if (!loginInfoJson.token) {
+                this.logout();
+            }
+        } catch (error) {
+            this.logout();
+        }
     },
     onHide: function () {
         console.log("App Hide");
     },
-    methods:{
-        ...mapMutations(["setModelList"]),
-        getDeviceModel(){
-            this.AxiosPOST("/currencyApi/currency/showDeviceModel", {}).then((res) => {
-                this.setModelList(res.result);
-            });
-        }
-    }
+    methods: {
+        ...mapMutations(["logout"]),
+    },
 };
 </script>
 

@@ -1,4 +1,11 @@
 {
   "navigationBarTitleText": "设备列表",
-  "usingComponents": {}
+  "usingComponents": {
+    "wx-devlist-u-waterfall-left": "/pages/wx-devlist/wx-devlist-u-waterfall-left",
+    "wx-devlist-u-waterfall-right": "/pages/wx-devlist/wx-devlist-u-waterfall-right",
+    "u-search": "/node-modules/uview-ui/components/u-search/u-search",
+    "u-waterfall": "/node-modules/uview-ui/components/u-waterfall/u-waterfall",
+    "u-lazy-load": "/node-modules/uview-ui/components/u-lazy-load/u-lazy-load",
+    "u-loadmore": "/node-modules/uview-ui/components/u-loadmore/u-loadmore"
+  }
 }

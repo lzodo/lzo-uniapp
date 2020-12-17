@@ -1,47 +1,59 @@
-
-.action-row {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	        flex-direction: row;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
+/* uni.scss */
+.action-row.data-v-b237504c {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
 }
-.action-row navigator {
-	color: #007aff;
-	padding: 0 20rpx;
+.action-row navigator.data-v-b237504c {
+  color: #007aff;
+  padding: 0 20rpx;
 }
-.oauth-row {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	        flex-direction: row;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
+.oauth-row.data-v-b237504c {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
-.oauth-image {
-	width: 100rpx;
-	height: 100rpx;
-	border: 1rpx solid #dddddd;
-	border-radius: 100rpx;
-	margin: 0 40rpx;
-	background-color: #ffffff;
+.oauth-image.data-v-b237504c {
+  width: 100rpx;
+  height: 100rpx;
+  border: 1rpx solid #dddddd;
+  -webkit-border-radius: 100rpx;
+          border-radius: 100rpx;
+  margin: 0 40rpx;
+  background-color: #ffffff;
 }
-.oauth-image image {
-	width: 60rpx;
-	height: 60rpx;
-	margin: 20rpx;
+.oauth-image image.data-v-b237504c {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 20rpx;
 }
+.login-warp.data-v-b237504c {
+  background: #fff;
+  width: 100%;
+  padding: 50rpx;
+}
+.login-warp .uForm.data-v-b237504c {
+  margin-bottom: 20rpx;
+}
+/* .uForm{
+	background: #fff;
+} */
 
