@@ -22,25 +22,12 @@
                         </u-cell-group>
                     </scroll-view>
                 </swiper-item>
-                <swiper-item class="swiper-item">
+                <!-- <swiper-item class="swiper-item">
                     <scroll-view scroll-y class="item-page" @scrolltolower="onreachBottom"> 实况数据 </scroll-view>
-                </swiper-item>
+                </swiper-item> -->
                 <swiper-item class="swiper-item">
                     <scroll-view scroll-y class="item-page showAlarm" @scrolltolower="onreachBottom">
-                        <mSidebar title="进度详情">
-                            <view class="row">
-                                <m-steps
-                                    v-for="(item, index) in alarmData"
-                                    :item="item"
-                                    :key="index"
-                                    :index="index"
-                                >
-                                    <text slot="status">编号:{{ item.ucode}}</text>
-                                    <view slot="dateTop">2020-20-20</view>
-                                    <view slot="dateBot">12:20:30</view>
-                                </m-steps>
-                            </view>
-                        </mSidebar>
+                        <timeAxis :options ="alarmData"></timeAxis>
                     </scroll-view>
                 </swiper-item>
             </swiper>
@@ -49,13 +36,11 @@
 </template>
 
 <script>
-import mSidebar from "@/components/m-sidebar/m-sidebar.vue";
-import mSteps from "@/components/m-steps/m-steps.vue";
+import timeAxis from "@/components/time-axis.vue";
 
 export default {
     components: {
-        mSidebar,
-        mSteps,
+        timeAxis
     },
     data() {
         return {
@@ -63,14 +48,14 @@ export default {
                 {
                     name: "基础信息",
                 },
-                {
-                    name: "实况数据",
-                },
+                // {
+                //     name: "实况数据",
+                // },
                 {
                     name: "历史告警",
                 },
             ],
-            tabs: ["基础信息", "实况数据", "历史告警"],
+            tabs: ["基础信息", "历史告警"],
             // 因为内部的滑动机制限制，请将tabs组件和swiper组件的current用不同变量赋值
             current: 0, // tabs组件的current值，表示当前活动的tab选项
             swiperCurrent: 0, // swiper组件的current值，表示当前那个swiper-item是活动的
@@ -82,6 +67,9 @@ export default {
     onLoad(option) {
         this.ucode = option.ucode;
     },
+    // filter:{
+    //     dateFormat(){}
+    // },
     methods: {
         // tabs通知swiper切换
         tabsChange(index) {

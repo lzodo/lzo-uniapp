@@ -7,4 +7,5 @@
 /dist
 
 /unpackage11
-/unpackage
+
+unpackage/**/*

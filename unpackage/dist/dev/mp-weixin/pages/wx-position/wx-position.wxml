@@ -1,1 +1,1 @@
-<view>设备位置</view>
+<view class="m-map data-v-41e0639c"><view class="page-body data-v-41e0639c"><view class="page-section page-section-gap data-v-41e0639c"><map style="width:100%;height:100%;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{covers}}" class="data-v-41e0639c"></map></view></view></view>
