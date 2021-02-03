@@ -68,8 +68,8 @@ export default {
                 password: this.form.password,
             };
             this.AxiosGET("/securityApi/auth/login", loginParams).then((res) => {
-                this.toMain(res)
                 console.log('9999999999999999999999')
+                this.toMain(res)
             });
         },
         initPosition() {

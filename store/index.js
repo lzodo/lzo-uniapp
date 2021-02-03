@@ -44,9 +44,12 @@ const store = new Vuex.Store({
             state.token = loginInfoJson.token;
             state.userName = loginInfoJson.displayname || "新用户";
 
-            state.platform = {
-                systemname:loginInfoJson.systemInfo.systemname
-            };
+			try{
+				state.platform.systemname = loginInfoJson.systemInfo.systemname;
+			}catch(e){
+				state.platform.systemname = '无'
+			}
+            
 
 
             console.log(state.token)
