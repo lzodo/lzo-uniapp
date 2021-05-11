@@ -85,7 +85,7 @@
                 }
             },
             "splashscreen" : {
-                "androidStyle" : "default",
+                "androidStyle" : "common",
                 "iosStyle" : "common",
                 "android" : {
                     "hdpi" : "C:/Users/Administrator/Desktop/菜单damo/20140522105358129.png",

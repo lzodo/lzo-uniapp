@@ -8,13 +8,13 @@
                 <swiper-item class="swiper-item">
                     <scroll-view scroll-y class="item-page" @scrolltolower="onreachBottom">
                         <u-cell-group title="基础信息">
-                            <u-cell-item icon="arrow-right" title="设备名称" :value="devInfoData[0].name"></u-cell-item>
-                            <u-cell-item icon="arrow-right" title="设备编号" :value="devInfoData[0].ucode"></u-cell-item>
-                            <u-cell-item icon="arrow-right" title="自动更新位置" :value="devInfoData[0].local_flag ? '是' : '否'"></u-cell-item>
-                            <u-cell-item icon="arrow-right" title="在线状态" :value="devInfoData[0].connstate"></u-cell-item>
-                            <u-cell-item icon="arrow-right" title="信号强度" :value="devInfoData[0].csq"></u-cell-item>
-                            <u-cell-item icon="calendar-fill" title="服务到期时间" :value="devInfoData[0].maintenancetime"></u-cell-item>
-                            <u-cell-item icon="calendar" title="安装时间" :value="devInfoData[0].setuptime"></u-cell-item>
+                            <u-cell-item icon="file-text" title="设备名称" :value="devInfoData[0].name"></u-cell-item>
+                            <u-cell-item icon="file-text" title="设备编号" :value="devInfoData[0].ucode"></u-cell-item>
+                            <u-cell-item icon="map" title="自动更新位置" :value="devInfoData[0].local_flag ? '是' : '否'"></u-cell-item>
+                            <u-cell-item icon="file-text" title="在线状态" :value="devInfoData[0].connstate"></u-cell-item>
+                            <u-cell-item icon="file-text" title="信号强度" :value="devInfoData[0].csq"></u-cell-item>
+                            <u-cell-item icon="calendar-fill" title="服务到期时间" :value="devInfoData[0].maintenancetime | formatTime"></u-cell-item>
+                            <u-cell-item icon="calendar" title="安装时间" :value="devInfoData[0].setuptime | formatTime"></u-cell-item>
                         </u-cell-group>
                         <u-cell-group title="地址">
                             <u-cell-item icon="map-fill" title="使用单位" :value="devInfoData[0].addrname"></u-cell-item>
@@ -22,9 +22,9 @@
                         </u-cell-group>
                     </scroll-view>
                 </swiper-item>
-                <!-- <swiper-item class="swiper-item">
+                <swiper-item class="swiper-item">
                     <scroll-view scroll-y class="item-page" @scrolltolower="onreachBottom"> 实况数据 </scroll-view>
-                </swiper-item> -->
+                </swiper-item>
                 <swiper-item class="swiper-item">
                     <scroll-view scroll-y class="item-page showAlarm" @scrolltolower="onreachBottom">
                         <timeAxis :options ="alarmData"></timeAxis>
@@ -37,25 +37,33 @@
 
 <script>
 import timeAxis from "@/components/time-axis.vue";
-
+//var dayjs = require('dayjs')
+import dayjs from 'dayjs' // ES 2015
+// dayjs().format()
+// dayjs(unix_time).format('YYYY-MM-DD')
 export default {
     components: {
         timeAxis
     },
+	filters:{
+		formatTime(date){
+			return dayjs(date).format('YYYY-MM-DD HH:mm:ss') 
+		}
+	},
     data() {
         return {
             list: [
                 {
                     name: "基础信息",
                 },
-                // {
-                //     name: "实况数据",
-                // },
+                {
+                    name: "实况数据",
+                },
                 {
                     name: "历史告警",
                 },
             ],
-            tabs: ["基础信息", "历史告警"],
+            tabs: ["基础信息", "实况数据","历史告警"],
             // 因为内部的滑动机制限制，请将tabs组件和swiper组件的current用不同变量赋值
             current: 0, // tabs组件的current值，表示当前活动的tab选项
             swiperCurrent: 0, // swiper组件的current值，表示当前那个swiper-item是活动的
