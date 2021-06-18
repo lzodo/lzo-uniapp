@@ -62,13 +62,11 @@ export default {
             });
         },
         submit() {
-              console.log('8888888888888888888')
             let loginParams = {
                 username: this.form.account,
                 password: this.form.password,
             };
             this.AxiosGET("/securityApi/auth/login", loginParams).then((res) => {
-                console.log('9999999999999999999999')
                 this.toMain(res)
             });
         },

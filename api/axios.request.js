@@ -11,7 +11,6 @@ let headers = {};
 //真机获取
 axios.defaults.adapter = function (config) {
     return new Promise((resolve, reject) => {
-        console.log(config);
         var settle = require("axios/lib/core/settle");
         var buildURL = require("axios/lib/helpers/buildURL");
         uni.request({
